@@ -6,7 +6,7 @@ def find_triplet_cliques(computers: dict[str, set[str]]) -> set[frozenset[str]]:
 
     for a, connections in computers.items():
         for b, c in combinations(connections, 2):
-            if {a, c} <= computers[b] and {a, b} <= computers[c]:
+            if c in computers[b] and b in computers[c]:
                 cliques.add(frozenset({a, b, c}))
 
     return cliques
